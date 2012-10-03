@@ -79,9 +79,10 @@ class ConfigManager implements ConfigManagerInterface
      */
     protected function getConfigRepository()
     {
-        if(is_null($this->configRepository)) {
+        if (is_null($this->configRepository)) {
             $this->configRepository = $this->getEntityManager()->getRepository('ArnmConfigBundle:Config');
         }
+
         return $this->configRepository;
     }
 
@@ -99,7 +100,7 @@ class ConfigManager implements ConfigManagerInterface
         $fields = $config->getFieldsList();
         foreach ($list as $item) {
             $name = $item->getName();
-            if(! in_array($name, $fields)) {
+            if (! in_array($name, $fields)) {
                 throw new \RuntimeException("Field must be defined in a list of available fields in configuration object!");
             }
             $setterMethod = 'set' . Inflector::classify($name);
@@ -120,16 +121,16 @@ class ConfigManager implements ConfigManagerInterface
         //get the list of available config fields for the given config object
         $fields = $config->getFieldsList();
 
-        $em = $this->getEntityManager();
+        $eMgr = $this->getEntityManager();
         //do it in transaction
-        $em->getConnection()->beginTransaction();
+        $eMgr->getConnection()->beginTransaction();
         try {
             //go though the provided list of data in the config object
             //check if it exists already and update and create and object to be saved
             foreach ($fields as $fieldName) {
                 //check if there is an element with such name
                 $confObj = $this->findConfigObjectByName($fieldName, $list);
-                if(! ($confObj instanceof Config)) {
+                if (! ($confObj instanceof Config)) {
                     $confObj = new Config();
                     $confObj->setNamespace($namespace);
                     $confObj->setName($fieldName);
@@ -139,31 +140,31 @@ class ConfigManager implements ConfigManagerInterface
                 $getterMethod = 'get' . Inflector::classify($fieldName);
                 $confObj->setValue($config->$getterMethod());
 
-                $em->persist($confObj);
+                $eMgr->persist($confObj);
             }
-            $em->flush();
-            $em->getConnection()->commit();
-        } catch (\Exception $e) {
-            $em->getConnection()->rollback();
+            $eMgr->flush();
+            $eMgr->getConnection()->commit();
+        } catch (\Exception $exc) {
+            $eMgr->getConnection()->rollback();
         }
     }
 
     /**
      * Finds a config object by it's name from provided list
      *
-     * @param string $name
-     * @param array $list
+     * @param string $name Object name
+     * @param array  $list List of available objects to search in
      *
      * @return Config
      */
     private function findConfigObjectByName($name, array $list = array())
     {
-        if(empty($list)) {
+        if (empty($list)) {
             return null;
         }
 
         foreach ($list as $item) {
-            if($item instanceof Config && $item->getName() == ($name)) {
+            if ($item instanceof Config && $item->getName() == ($name)) {
                 return $item;
             }
         }

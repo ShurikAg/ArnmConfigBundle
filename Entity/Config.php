@@ -41,11 +41,10 @@ class Config
      */
     private $namespace;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,20 +55,20 @@ class Config
      * Set name
      *
      * @param string $name
-     * 
+     *
      * @return Config
      */
     public function setName($name)
     {
         $this->name = $name;
-        
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -80,20 +79,20 @@ class Config
      * Set value
      *
      * @param string $value
-     * 
+     *
      * @return Config
      */
     public function setValue($value)
     {
         $this->value = $value;
-        
+
         return $this;
     }
 
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
@@ -104,20 +103,20 @@ class Config
      * Set namespace
      *
      * @param string $namespace
-     * 
+     *
      * @return Config
      */
     public function setNamespace($namespace)
     {
         $this->namespace = $namespace;
-        
+
         return $this;
     }
 
     /**
      * Get namespace
      *
-     * @return string 
+     * @return string
      */
     public function getNamespace()
     {

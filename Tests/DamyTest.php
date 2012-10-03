@@ -6,9 +6,11 @@ namespace Arnm\ConfigBundle\Tests;
  */
 class DamyTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Just a dumy test
+     */
     public function testDamy()
     {
         $this->assertTrue(true);
     }
 }
-
