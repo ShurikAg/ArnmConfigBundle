@@ -9,7 +9,7 @@
     </parameters>
 
     <services>
-        <service id="arnm_config.manager" class="%arnm_pages.manager.class%">
+        <service id="arnm_config.manager" class="%arnm_config.manager.class%">
             <argument type="service" id="doctrine" />
         </service>
     </services>
