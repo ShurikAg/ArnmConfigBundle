@@ -21,13 +21,6 @@ interface ConfigInterface
     public function getNamespace();
 
     /**
-     * Sets namespace of this class
-     *
-     * @param string $namespace
-     */
-    public function setNamespace($namespace);
-
-    /**
      * Gets a list of fields defined for this namespace
      *
      * @return array
