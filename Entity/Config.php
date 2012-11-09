@@ -30,7 +30,7 @@ class Config
     /**
      * @var string $value
      *
-     * @ORM\Column(name="value", type="string", length=1000)
+     * @ORM\Column(name="value", type="string", length=1000, nullable=true)
      */
     private $value;
 

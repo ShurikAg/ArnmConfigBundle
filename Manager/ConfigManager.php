@@ -146,6 +146,7 @@ class ConfigManager implements ConfigManagerInterface
             $eMgr->getConnection()->commit();
         } catch (\Exception $exc) {
             $eMgr->getConnection()->rollback();
+            throw $exc;
         }
     }
 
