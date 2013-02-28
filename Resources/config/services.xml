@@ -6,11 +6,15 @@
 
     <parameters>
         <parameter key="arnm_config.manager.class">Arnm\ConfigBundle\Manager\ConfigManager</parameter>
+        <parameter key="arnm_config.info.class">Arnm\ConfigBundle\ConfigBundleInfo</parameter>
     </parameters>
 
     <services>
         <service id="arnm_config.manager" class="%arnm_config.manager.class%">
             <argument type="service" id="doctrine" />
+        </service>
+        <service id="arnm_config.info" class="%arnm_config.info.class%">
+            <tag name="arnm_core.bundle_info"/>
         </service>
     </services>
 </container>
