@@ -67,9 +67,9 @@ class ConfigManager implements ConfigManagerInterface
      *
      * @return Doctrine\ORM\EntityManager
      */
-    protected function getEntityManager()
+    protected function getManager()
     {
-        return $this->getDoctrine()->getEntityManager();
+        return $this->getDoctrine()->getManager();
     }
 
     /**
@@ -80,7 +80,7 @@ class ConfigManager implements ConfigManagerInterface
     protected function getConfigRepository()
     {
         if (is_null($this->configRepository)) {
-            $this->configRepository = $this->getEntityManager()->getRepository('ArnmConfigBundle:Config');
+            $this->configRepository = $this->getManager()->getRepository('ArnmConfigBundle:Config');
         }
 
         return $this->configRepository;
@@ -121,7 +121,7 @@ class ConfigManager implements ConfigManagerInterface
         //get the list of available config fields for the given config object
         $fields = $config->getFieldsList();
 
-        $eMgr = $this->getEntityManager();
+        $eMgr = $this->getManager();
         //do it in transaction
         $eMgr->getConnection()->beginTransaction();
         try {
