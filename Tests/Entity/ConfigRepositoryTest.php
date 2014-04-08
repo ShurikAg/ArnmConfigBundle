@@ -2,8 +2,6 @@
 
 require_once 'Entity/ConfigRepository.php';
 
-require_once 'PHPUnit/Framework/TestCase.php';
-
 /**
  * ConfigRepository test case.
  */

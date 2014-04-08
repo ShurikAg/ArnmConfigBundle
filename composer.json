@@ -1,7 +1,7 @@
 {
     "name": "iibs/arnm-config",
     "description": "General Config bundle of Araneum",
-    "version": "1.0.0-beta",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Alex Agulyansky",
@@ -16,8 +16,8 @@
     "target-dir": "Arnm/ConfigBundle",
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.2.*",
+        "symfony/symfony": "2.4.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
-        "iibs/arnm-core": "dev-master"
+        "iibs/arnm-core": "1.0.0"
     }
 }
