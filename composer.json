@@ -18,6 +18,6 @@
         "php": ">=5.3.3",
         "symfony/symfony": "2.5.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
-        "iibs/arnm-core": "1.0.1"
+        "iibs/arnm-core": "1.0.*"
     }
 }
