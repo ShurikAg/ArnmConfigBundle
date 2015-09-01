@@ -52,7 +52,7 @@
 			<arg value="curl -s http://getcomposer.org/installer | php" />
 		</exec>
 		-->
-		<exec executable="composer.phar" failonerror="true">
+		<exec executable="composer" failonerror="true">
 			<arg value="install" />
 		</exec>
 	</target>
