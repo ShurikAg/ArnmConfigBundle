@@ -2,15 +2,24 @@
 namespace Arnm\ConfigBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Blameable\Traits\BlameableEntity;
 /**
  * Arnm\ConfigBundle\Entity\Config
  *
  * @ORM\Table(name="config", uniqueConstraints={@ORM\UniqueConstraint(name="namespace_name_idx", columns={"namespace", "name"})})
  * @ORM\Entity(repositoryClass="Arnm\ConfigBundle\Entity\ConfigRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
+ * @Gedmo\Loggable
  */
 class Config
 {
+    use SoftDeleteableEntity;
+    use TimestampableEntity;
+    use BlameableEntity;
+
     /**
      * @var integer $id
      *
@@ -24,6 +33,7 @@ class Config
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=50)
+     * @Gedmo\Versioned
      */
     private $name;
 
@@ -31,6 +41,7 @@ class Config
      * @var string $value
      *
      * @ORM\Column(name="value", type="string", length=1000, nullable=true)
+     * @Gedmo\Versioned
      */
     private $value;
 
@@ -38,6 +49,7 @@ class Config
      * @var string $namespace
      *
      * @ORM\Column(name="namespace", type="string", length=50)
+     * @Gedmo\Versioned
      */
     private $namespace;
 
